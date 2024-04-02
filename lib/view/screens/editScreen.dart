@@ -67,7 +67,7 @@ class _EditScreenState extends State<EditScreen> {
       actions: [
         IconButton(
             onPressed: () {},
-            icon: Icon(Icons.refresh_rounded, color: Colors.white)),
+            icon: Icon(Icons.refresh_rounded, color: Colors.blue)),
       ],
     );
   }
