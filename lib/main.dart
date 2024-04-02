@@ -1,4 +1,6 @@
 import 'package:festival_poster_maker/view/screens/HomeScreen.dart';
+import 'package:festival_poster_maker/view/screens/edit.dart';
+import 'package:festival_poster_maker/view/screens/editScreen.dart';
 import 'package:festival_poster_maker/view/screens/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,6 +22,8 @@ class FestivalPoster extends StatelessWidget {
       routes: {
         '/': (context) => SplashScreen(),
         '/home': (context) => HomeScreen(),
+        '/edit': (context) => Edit(),
+        '/editScreen': (context) => EditScreen(),
       },
     );
   }

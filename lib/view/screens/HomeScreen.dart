@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: 80,
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xff1D2539),
         title: Image.asset(
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 35),
-                  height: 800,
+                  height: 820,
                   child: (!isGridView) ? homeListView() : homeGridView(),
                 )
               ],
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
   GridView homeGridView() {
     return GridView.builder(
       itemCount: homeFestivalContainerLists.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
       ),
       itemBuilder: (context, index) => gridViewContainer(
@@ -77,11 +77,16 @@ class _HomeScreenState extends State<HomeScreen> {
   ListView homeListView() {
     return ListView.builder(
       scrollDirection: Axis.vertical,
-      itemBuilder: (context, index) => homeContainers(
-          color: homeFestivalContainerLists[index]['color'],
-          festivalName: homeFestivalContainerLists[index]['festivalName'],
-          subtitle: homeFestivalContainerLists[index]['subtitle'],
-          festivalImage: homeFestivalContainerLists[index]['image']),
+      itemBuilder: (context, index) => InkWell(
+        onTap: () {
+          Navigator.of(context).pushNamed('/edit', arguments: index);
+        },
+        child: homeContainers(
+            color: homeFestivalContainerLists[index]['color'],
+            festivalName: homeFestivalContainerLists[index]['festivalName'],
+            subtitle: homeFestivalContainerLists[index]['subtitle'],
+            festivalImage: homeFestivalContainerLists[index]['image']),
+      ),
       itemCount: homeFestivalContainerLists.length,
     );
   }

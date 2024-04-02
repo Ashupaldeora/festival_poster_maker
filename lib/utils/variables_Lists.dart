@@ -88,7 +88,7 @@ List homeFestivalContainerLists = [
   {
     'image': 'assets/images/rakshabandhan.jpg',
     'festivalName': 'Raksha Bandhan',
-    'subtitle': 'Create your Rakshabandhan template',
+    'subtitle': 'Create your Raksha Bandhan template',
     'color': Colors.deepPurpleAccent
   },
   {
