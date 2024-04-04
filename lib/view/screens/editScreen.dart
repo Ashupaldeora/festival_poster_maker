@@ -126,7 +126,7 @@ class _EditScreenState extends State<EditScreen> {
                   IconButton(
                       onPressed: () {
                         setState(() {
-                          isEditingStarted = true;
+                          isEditingStarted = false;
                           switch (index) {
                             case 1:
                               isTextEditingStarted = true;
