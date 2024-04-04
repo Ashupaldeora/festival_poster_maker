@@ -60,6 +60,22 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/vasant panchami/
+    - assets/christmas/
+    - assets/diwali/
+    - assets/durga puja/
+    - assets/dussehra/
+    - assets/ganesh/
+    - assets/gurunanak/
+    - assets/holi/
+    - assets/independence/
+    - assets/janmashtami/
+    - assets/mahashivratri/
+    - assets/navratri/
+    - assets/onam/
+    - assets/rakshabandhan/
+    - assets/rathyatra/
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:

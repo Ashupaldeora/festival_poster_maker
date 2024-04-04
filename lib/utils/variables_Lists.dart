@@ -32,12 +32,6 @@ List homeFestivalContainerLists = [
     'color': Colors.green
   },
   {
-    'image': 'assets/images/eid al fitr.jpg',
-    'festivalName': 'Eid Al Fitr',
-    'subtitle': 'Create your Eid Al Fitr template',
-    'color': Colors.pink
-  },
-  {
     'image': 'assets/images/ganesh.jpg',
     'festivalName': 'Ganesh',
     'subtitle': 'Create your Ganesh template',
@@ -100,3 +94,14 @@ List homeFestivalContainerLists = [
 ];
 
 bool isGridView = false;
+bool isEditingStarted = false;
+bool temp = false;
+int templateImageIndex = 0;
+
+List bottomNavigationIcons = [
+  {'icon': Icons.image, 'name': 'Canvas'},
+  {'icon': Icons.text_format, 'name': 'Text'},
+  {'icon': Icons.share, 'name': 'Share'},
+  {'icon': Icons.share, 'name': 'Share'},
+  {'icon': Icons.save, 'name': 'Save'},
+];

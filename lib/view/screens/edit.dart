@@ -90,9 +90,7 @@ class _EditState extends State<Edit> {
               ),
             ),
           ),
-          SizedBox(
-            height: 90,
-          ),
+          Spacer(),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
