@@ -39,7 +39,7 @@ class _EditScreenState extends State<EditScreen> {
                   ]),
             ),
             const Spacer(),
-            (isEditingStarted)
+            (isEditingStarted) //when any navigation button is clicked == true
                 ? AnimatedContainer(
                     duration: const Duration(milliseconds: 500),
                     height: 170,
@@ -47,62 +47,64 @@ class _EditScreenState extends State<EditScreen> {
                     decoration: const BoxDecoration(color: Color(0xff1D2539)),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                (!isTextEditingStarted)
-                                    ? 'Choose Background'
-                                    : 'Edit Your Text Here',
-                                style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
+                      child:  Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      (isEditingStarted && !isTextEditingStarted)?'Choose Background':'Edit Your Text Here',
+                                      style: GoogleFonts.poppins(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          isEditingStarted = false;
+                                        });
+                                      },
+                                      icon: const Icon(Icons.close),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    isEditingStarted = false;
-                                  });
-                                },
-                                icon: const Icon(Icons.close),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            height: 80,
-                            child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: templates[index1].length,
-                              itemBuilder: (context, index) => InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    templateImageIndex = index;
-                                  });
-                                },
-                                child: Container(
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 10),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                (isEditingStarted && !isTextEditingStarted) // index 0 of bottom navigation is true
+                                    ?  Container(
                                   height: 80,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: AssetImage(
-                                              templates[index1][index]))),
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: templates[index1].length,
+                                    itemBuilder: (context, index) => InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          templateImageIndex = index;
+                                        });
+                                      },
+                                      child: Container(
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 10),
+                                        height: 80,
+                                        width: 80,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: AssetImage(
+                                                    templates[index1][index]))),
+                                      ),
+                                    ),
+                                  ),
+                                ):(isTextEditingStarted)?:null
+                              ],
+                            )
+
                     ))
                 : const SizedBox(),
           ],
@@ -126,7 +128,7 @@ class _EditScreenState extends State<EditScreen> {
                   IconButton(
                       onPressed: () {
                         setState(() {
-                          isEditingStarted = false;
+                          isEditingStarted = true;
                           switch (index) {
                             case 1:
                               isTextEditingStarted = true;
