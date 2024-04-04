@@ -24,7 +24,7 @@ class _EditScreenState extends State<EditScreen> {
           children: [
             Container(
               height: 400,
-              margin: EdgeInsets.all(20),
+              margin: const EdgeInsets.all(20),
               width: double.infinity,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -38,115 +38,123 @@ class _EditScreenState extends State<EditScreen> {
                         blurRadius: 20)
                   ]),
             ),
-            Spacer(),
+            const Spacer(),
             (isEditingStarted)
                 ? AnimatedContainer(
-                    duration: Duration(milliseconds: 500),
-                    height: (isEditingStarted) ? 150 : 0,
+                    duration: const Duration(milliseconds: 500),
+                    height: 170,
                     width: double.maxFinite,
-                    decoration: BoxDecoration(color: Color(0xff1D2539)),
-                    child: (isEditingStarted)
-                        ? Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Choose Background',
-                                      style: GoogleFonts.poppins(
-                                        color: Colors.white,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    IconButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          isEditingStarted = false;
-                                        });
-                                      },
-                                      icon: Icon(Icons.close),
-                                    ),
-                                  ],
+                    decoration: const BoxDecoration(color: Color(0xff1D2539)),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                (!isTextEditingStarted)
+                                    ? 'Choose Background'
+                                    : 'Edit Your Text Here',
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
                                 ),
-                                Container(
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isEditingStarted = false;
+                                  });
+                                },
+                                icon: const Icon(Icons.close),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            height: 80,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: templates[index1].length,
+                              itemBuilder: (context, index) => InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    templateImageIndex = index;
+                                  });
+                                },
+                                child: Container(
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 10),
                                   height: 80,
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: templates[index1].length,
-                                    itemBuilder: (context, index) => InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          templateImageIndex = index;
-                                        });
-                                      },
-                                      child: Container(
-                                        margin: EdgeInsets.symmetric(
-                                            horizontal: 10),
-                                        height: 80,
-                                        width: 80,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                            image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: AssetImage(
-                                                    templates[index1][index]))),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(
+                                              templates[index1][index]))),
+                                ),
+                              ),
                             ),
                           )
-                        : null)
-                : SizedBox(),
+                        ],
+                      ),
+                    ))
+                : const SizedBox(),
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-          height: 80,
-          color: const Color(0xff1D2539),
-          child: ListView.builder(
-            itemCount: bottomNavigationIcons.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => Container(
-                margin: EdgeInsets.symmetric(horizontal: 25),
-                child: Column(
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          setState(() {
-                            isEditingStarted = true;
-                          });
-                        },
-                        icon: Icon(
-                          bottomNavigationIcons[index]['icon'],
-                          size: 35,
-                          color: Colors.white,
-                        )),
-                    Text(
-                      bottomNavigationIcons[index]['name'],
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                )),
-          )),
+      bottomNavigationBar: bottomNavigation(),
     );
+  }
+
+  Container bottomNavigation() {
+    return Container(
+        height: 80,
+        color: const Color(0xff1D2539),
+        child: ListView.builder(
+          itemCount: bottomNavigationIcons.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) => Container(
+              margin: const EdgeInsets.symmetric(horizontal: 25),
+              child: Column(
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isEditingStarted = true;
+                          switch (index) {
+                            case 1:
+                              isTextEditingStarted = true;
+                          }
+                        });
+                      },
+                      icon: Icon(
+                        bottomNavigationIcons[index]['icon'],
+                        size: 35,
+                        color: Colors.white,
+                      )),
+                  Text(
+                    bottomNavigationIcons[index]['name'],
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              )),
+        ));
   }
 
   AppBar editScreenAppBar() {
     return AppBar(
       toolbarHeight: 70,
-      backgroundColor: Color(0xff1D2539),
+      backgroundColor: const Color(0xff1D2539),
       title: Text(
         "Edit",
         style: GoogleFonts.poppins(
@@ -158,18 +166,18 @@ class _EditScreenState extends State<EditScreen> {
       leading: IconButton(
           onPressed: () {
             templateImageIndex = 0;
-            isEditingStarted = true;
+            isEditingStarted = false;
 
             Navigator.of(context).pop();
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
             color: Colors.white,
           )),
       actions: [
         IconButton(
             onPressed: () {},
-            icon: Icon(Icons.refresh_rounded, color: Colors.white)),
+            icon: const Icon(Icons.refresh_rounded, color: Colors.white)),
       ],
     );
   }

@@ -95,13 +95,13 @@ List homeFestivalContainerLists = [
 
 bool isGridView = false;
 bool isEditingStarted = false;
+bool isTextEditingStarted = false;
 bool temp = false;
 int templateImageIndex = 0;
 
 List bottomNavigationIcons = [
   {'icon': Icons.image, 'name': 'Canvas'},
   {'icon': Icons.text_format, 'name': 'Text'},
-  {'icon': Icons.share, 'name': 'Share'},
   {'icon': Icons.share, 'name': 'Share'},
   {'icon': Icons.save, 'name': 'Save'},
 ];
