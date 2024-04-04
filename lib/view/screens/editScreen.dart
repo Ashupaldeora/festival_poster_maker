@@ -158,7 +158,7 @@ class _EditScreenState extends State<EditScreen> {
       leading: IconButton(
           onPressed: () {
             templateImageIndex = 0;
-            isEditingStarted = false;
+            isEditingStarted = true;
 
             Navigator.of(context).pop();
           },
