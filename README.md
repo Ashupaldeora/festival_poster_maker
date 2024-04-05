@@ -20,6 +20,10 @@ This project is a starting point for a Flutter application.
   <img src="https://github.com/Ashupaldeora/festival_poster_maker/assets/143180848/212b0d7e-7187-494f-8cd4-464c633613b8" height = 450px hspace=20>
   <img src="https://github.com/Ashupaldeora/festival_poster_maker/assets/143180848/6e252baf-8723-4f10-b339-1f544b8ec25b" height = 450px hspace=20>
 </p>
+<p>
+  <img src="https://github.com/Ashupaldeora/festival_poster_maker/assets/143180848/ff177b71-5bc3-455a-a85f-dcb86ad05105" height = 450px hspace=20>
+</p>
+
 
 
 
