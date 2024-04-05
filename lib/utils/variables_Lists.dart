@@ -96,8 +96,23 @@ List homeFestivalContainerLists = [
 bool isGridView = false;
 bool isEditingStarted = false;
 bool isTextEditingStarted = false;
-bool temp = false;
+bool isAlignmentSelected = false;
+bool isFontFamilySelected = false;
+bool isFontColorSelected = false;
+bool isItalic = false;
+bool isBold = false;
 int templateImageIndex = 0;
+bool centerAlignment = false;
+bool leftAlignment = false;
+bool rightAlignment = false;
+TextEditingController txtAddText = TextEditingController();
+
+int txtColorIndex = 0;
+int fontFamilySelectedIndex = 0;
+double textSize = 20;
+double textFromTopPosition = 0;
+
+double textFromLeftPosition = 0;
 
 List bottomNavigationIcons = [
   {'icon': Icons.image, 'name': 'Canvas'},
